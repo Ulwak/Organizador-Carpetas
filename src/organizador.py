@@ -21,8 +21,8 @@ def evitar_reemplazar_repetidos(ruta_archivo):
 
 def main():
     while True:
-        respuesta = input("Desea mover los archivos ocultos para organizarlos tambien? (Si/No, S/N, Yes/No, Y/N)").lower()
-        if respuesta in ["si", "s", "yes"]:
+        respuesta = input("Desea mover los archivos ocultos para organizarlos tambien? (Si/No, S/N, Yes/No, Y/N): ").lower()
+        if respuesta in ["si", "s", "yes", "y"]:
             mover_ocultos = True
             break
         elif respuesta in ["no", "n"]:
