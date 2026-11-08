@@ -1,5 +1,7 @@
 import shutil
 from pathlib import Path
+import os
+import sys
 
 def listar_archivos_de_la_carpeta_del_usuario(ruta, ruta_script, mover_ocultos):
     # Verifica si el usuario queria mover los archivos ocultos o unicamente los normales.
@@ -19,6 +21,12 @@ def evitar_reemplazar_repetidos(ruta_archivo):
         vuelta += 1
     return ruta_nueva
 
+def obtener_carpeta_ejecucion():
+        if getattr(sys, 'frozen', False):
+            return Path(sys.executable).resolve()
+        else:
+            return Path(__file__).resolve()
+
 def main():
     while True:
         respuesta = input("Desea mover los archivos ocultos para organizarlos tambien? (Si/No, S/N, Yes/No, Y/N): ").lower()
@@ -30,7 +38,9 @@ def main():
             break
         else:
             print("Ingrese una respuesta valida. (Si/No, S/N, Yes/No, Y/N)")
-    ruta_script = Path(__file__).resolve()
+
+
+    ruta_script = obtener_carpeta_ejecucion()
     ruta = ruta_script.parent
     archivos = listar_archivos_de_la_carpeta_del_usuario(ruta, ruta_script, mover_ocultos)
     #verifica que haya algun archivo para organizar
@@ -56,3 +66,4 @@ def main():
         print("No hay archivos para organizar en esta carpeta")
 if __name__ == "__main__":
     main()
+    input("Presione cualquier tecla para salir.")
