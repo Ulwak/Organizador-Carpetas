@@ -22,8 +22,9 @@ def evitar_reemplazar_repetidos(ruta_archivo):
     return ruta_nueva
 
 def obtener_carpeta_ejecucion():
-        if getattr(sys, 'frozen', False):
-            return Path(sys.executable).resolve()
+        if "__compiled__" in globals():
+            return Path(sys.argv[0]).resolve()
+        
         else:
             return Path(__file__).resolve()
 
