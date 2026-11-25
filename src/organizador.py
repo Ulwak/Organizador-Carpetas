@@ -29,7 +29,7 @@ def obtener_carpeta_ejecucion():
 
 def main():
     while True:
-        respuesta = input("Desea mover los archivos ocultos para organizarlos tambien? (Si/No, S/N, Yes/No, Y/N): ").lower()
+        respuesta = input("Desea mover los archivos ocultos para organizarlos tambien? (Si/No, S/N, Yes/No, Y/N): ").lower().strip()
         if respuesta in ["si", "s", "yes", "y"]:
             mover_ocultos = True
             break
